@@ -1,7 +1,7 @@
 #!flask/bin/python
 import json
 from helloworld.flaskrun import flaskrun
-from flask import Flask, request, render_template, Response
+from flask import Flask, request, render_template, Response, redirect
 from flask_cors import CORS
 from datetime import datetime, timezone
 from werkzeug.utils import secure_filename
@@ -39,7 +39,11 @@ cors = CORS(application, allow_headers=[
     "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials"],
     supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
+@application.route("/")
+def index():
 
+    url = os.environ.get('AWS_STATIC_WEBSITE_S3_URL')
+    return redirect(url)
 
 @application.route('/api/submit_resident_form', methods=['POST'])
 def submit_resident_form():
