@@ -27,15 +27,15 @@ application = Flask(__name__)
 def get():
     return Response(json.dumps({'Output': 'Hello World'}), mimetype='application/json', status=200)
 
+
+    
 @application.route('/', methods=['POST'])
 def post():
     return Response(json.dumps({'Output': 'Hello World'}), mimetype='application/json', status=200)
 
 application.config.from_object(Config())
 
-cors = CORS(application, allow_headers=[
-    "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials"],
-            supports_credentials=True, resources={r"/*": {"origins": "*"}})
+
 
 @application.route('/api/submit_resident_form', methods=['POST'])
 def submit_resident_form():
