@@ -36,8 +36,9 @@ def post():
 application.config.from_object(Config())
 
 cors = CORS(application, allow_headers=[
-    "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials", "Access-Control-Allow-Origin"],
-            supports_credentials=True, resources={r"/*": {"origins": "*"}})
+    "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials"],
+    supports_credentials=True, resources={r"/*": {"origins": "*"}})
+
 
 
 @application.route('/api/submit_resident_form', methods=['POST'])
