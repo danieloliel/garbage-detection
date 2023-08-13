@@ -38,6 +38,7 @@ application.config.from_object(Config())
 #cors = CORS(application, allow_headers=[
 #    "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials", "Access-Control-Allow-Origin"],
 #            supports_credentials=True, resources={r"/*": {"origins": "*"}})
+#s
 
 cors = CORS(application, resources={
     r"/api/*": {"origins": "http://garbage-detection-bucket-react-static1.s3-website-us-east-1.amazonaws.com"}
