@@ -3,3 +3,4 @@
 /build
 /.venv
 /helloworld.egg-info
+/.env
