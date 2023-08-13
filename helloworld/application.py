@@ -35,6 +35,17 @@ def post():
 
 application.config.from_object(Config())
 
+
+# Add this before your route handler
+@application.after_request
+def add_cors_headers(response):
+    # Replace "*" with the appropriate domain that should be allowed
+    response.headers['Access-Control-Allow-Origin'] = 'http://garbage-detection-bucket-react-static1.s3-website-us-east-1.amazonaws.com'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+    
+    
 cors = CORS(application, allow_headers=[
     "Content-Type", "Authorization", "Access-Control-Allow-Credentials", "withCredentials", "Access-Control-Allow-Origin"],
             supports_credentials=True, resources={r"/*": {"origins": "*"}})
